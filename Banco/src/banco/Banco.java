@@ -29,5 +29,17 @@ public class Banco {
         System.out.println("O dono da conta " + c1.numero + " é: " + c1.titular.nome);
         c1.extrato();
         c2.extrato();
+
+        c1.sacar(150);
+        c1.transferir(c2, 100);
+        c1.sacar(100);
+        c1.depositar(100);
+        c1.transferir(c2, 0);
+
+        c1.sacar(800);
+        for(int i = 1; i < 31; i++) {
+            c1.chequeEspecial(0.5);
+            System.out.println("Saldo após " + i + " dias: R$ " + c1.saldo);
+        }
     }
 }
