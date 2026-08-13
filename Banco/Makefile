@@ -2,7 +2,8 @@ JAVAC := javac
 JAVA := java
 SRC_DIR := src
 OUT_DIR := out
-MAIN_CLASS := Main
+MAIN_CLASS := banco.Banco
+MAIN_CLASS_FILE := $(OUT_DIR)/$(subst .,/,$(MAIN_CLASS)).class
 SOURCES := $(shell find $(SRC_DIR) -type f -name '*.java' 2>/dev/null)
 
 .PHONY: all compile run clean
@@ -19,9 +20,9 @@ compile:
 	fi
 
 run: clean compile
-	@if [ ! -f "$(OUT_DIR)/$(MAIN_CLASS).class" ]; then \
+	@if [ ! -f "$(MAIN_CLASS_FILE)" ]; then \
 		echo "Classe principal $(MAIN_CLASS) não encontrada."; \
-		echo "Adicione um programa executável em $(SRC_DIR)/$(MAIN_CLASS).java."; \
+		echo "Verifique se a classe possui o método public static void main(String[] args)."; \
 	else \
 		$(JAVA) -cp $(OUT_DIR) $(MAIN_CLASS); \
 	fi
