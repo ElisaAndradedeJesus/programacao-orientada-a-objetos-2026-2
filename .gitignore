@@ -1,0 +1,12 @@
+# Arquivos gerados pelo compilador Java
+*.class
+
+# Pastas de saída comuns
+bin/
+out/
+target/
+
+# Configurações locais de IDEs
+.idea/
+*.iml
+
