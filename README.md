@@ -14,7 +14,8 @@ Repositório dedicado às atividades, aos exercícios e aos trabalhos desenvolvi
 ```text
 ├── Banco               # Projeto Java de estudo
 │   ├── src
-│   │   └── Main.java  # Ponto de entrada do programa
+│   │   └── banco
+│   │       └── Banco.java  # Ponto de entrada do programa
 │   └── Makefile       # Automação da compilação e execução
 ├── TrabalhoPOO         # Espaço reservado para o trabalho da disciplina
 ├── .gitignore          # Arquivos que não devem ser versionados
@@ -40,12 +41,13 @@ cd Banco
 Use os seguintes comandos:
 
 ```bash
-make          # Compila todos os arquivos Java da pasta src
-make run      # Limpa, compila e executa a classe Main
+make          # Compila, executa banco.Banco e remove os arquivos compilados
+make compile  # Compila todos os arquivos Java da pasta src
+make run      # Executa banco.Banco (requer compilação prévia)
 make clean    # Remove os arquivos compilados
 ```
 
-O comando `make compile` também pode ser usado explicitamente para compilar. Os arquivos compilados são criados na pasta `out`, que não deve ser enviada ao repositório.
+O comando `make` executa o fluxo completo: compila o projeto, roda o programa e limpa a pasta `out` ao final. Para manter os arquivos compilados, use `make compile`; depois, `make run` pode ser usado para executar o programa. A pasta `out` não deve ser enviada ao repositório.
 
 ## Guia de preparação do ambiente
 
@@ -146,15 +148,15 @@ Cada atividade ou trabalho deve ser mantido como um projeto independente. Entre 
 
 ```bash
 cd Banco
-make run
+make
 ```
 
 Comandos disponíveis em cada projeto:
 
 ```bash
-make          # Compila os arquivos Java
-make compile  # Também compila os arquivos Java
-make run      # Limpa, compila e executa a classe Main
+make          # Compila, executa banco.Banco e limpa os arquivos gerados
+make compile  # Compila os arquivos Java e mantém a pasta out
+make run      # Executa banco.Banco após make compile
 make clean    # Remove a pasta out e os arquivos compilados
 ```
 
@@ -173,5 +175,5 @@ Para evitar conflitos, envie para o GitHub as alterações feitas no computador 
 - **`java: command not found`:** instale o JDK 21 e abra novamente o terminal.
 - **`javac: command not found`:** foi instalado somente o ambiente de execução; instale o JDK completo.
 - **`make: command not found`:** instale o pacote `make` ou utilize o WSL no Windows.
-- **`Classe principal Main não encontrada`:** verifique se existe uma classe `Main` com o método `public static void main(String[] args)` dentro de `src`.
+- **`Classe principal banco.Banco não encontrada`:** execute `make compile` antes de `make run` e verifique se a classe `Banco` possui o método `public static void main(String[] args)` dentro de `src/banco`.
 - **A extensão Java não reconhece o JDK:** no VS Code, pressione `Ctrl+Shift+P`, procure por **Java: Configure Java Runtime** e selecione o JDK 21.

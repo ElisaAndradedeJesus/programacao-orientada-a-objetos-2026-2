@@ -5,6 +5,19 @@ public class Conta {
     Pessoa titular;
     double saldo,limite;
 
+    Conta(String n, Pessoa t) {
+        this.numero = n;
+        this.titular = t;
+        System.out.println("Conta criada com sucesso!");
+    }
+    Conta(String n, Pessoa t, double l) {
+        this.numero = n;
+        this.titular = t;
+        this.saldo = 0;
+        this.limite = l;
+        System.out.println("Conta criada com sucesso!");
+    }
+
     double saldoDisponivel() {
         return this.saldo + this.limite;
     }
@@ -47,13 +60,13 @@ public class Conta {
             return false;
         }
     }
-    void chequeEspecial(double taxa) {
+    void chequeEspecial(double juros) {
         if (this.saldo >= 0) {
             return;
         } else {
-            double juros = this.limite * taxa / 1000;
-            this.saldo -= juros;
-            System.out.println("Juros de R$ " + juros + " cobrados na conta " + this.numero + ". Novo saldo: R$ " + this.saldo);
+
+            this.saldo = this.saldo + (juros + this.saldo)/100;
+            // System.out.println("Juros de R$ " + juros + " cobrados na conta " + this.numero + ". Novo saldo: R$ " + this.saldo);
         }
     }
 }
