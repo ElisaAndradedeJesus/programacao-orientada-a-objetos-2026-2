@@ -18,9 +18,20 @@ public class Pessoa {
         System.out.println("Pessoa cadastrada com sucesso!");
     }
 
-    int idade() {
-        int anoAtual = 2024; // Substitua pelo ano atual
-        return anoAtual - this.dataNascimento.ano;
+    int idade(Data hoje) {
+
+        int diff = hoje.ano - this.dataNascimento.ano;
+
+        if (this.dataNascimento.mes < hoje.mes ) {
+            return diff;
+        }
+        if (this.dataNascimento.mes > hoje.mes) {
+            return diff - 1;
+        }
+        if (this.dataNascimento.dia < hoje.dia) {
+            return diff;
+        }
+        return diff - 1;
     }
 }
 

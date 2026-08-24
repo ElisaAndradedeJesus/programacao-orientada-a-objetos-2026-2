@@ -8,8 +8,10 @@ public class Banco {
         Pessoa p1 = new Pessoa("Elisa", "123.456.789-00", data1, "F");
         Pessoa p2 = new Pessoa("João", "987.654.321-00", data2, "M");
 
-        Conta c1 = new Conta("12345-6", p1, 500.0);
-        Conta c2 = new Conta("98765-4", p2, 1000.0);
+        Gerente gerente1 = new Gerente("Maria", "111.222.333-44", new Data(1, 1, 1980), "F", "G123", "senha123");
+
+        ContaCorrente c1 = new ContaCorrente("12345-6", p1, new Data(1, 1, 2020), gerente1);
+        ContaCorrente c2 = new ContaCorrente("98765-4", p2, new Data(1, 1, 2023), gerente1);
 
         System.out.println("Data de nascimento de " + p1.nome + ": ");
         data1.exibirData();
