@@ -1,16 +1,27 @@
 package banco;
+import java.util.Scanner;
+
 
 public class Pessoa {
     String nome;
     String cpf;
     Data dataNascimento;
-    String sexo;
+    char sexo;
 
     Pessoa() {
-        System.out.println("Pessoa cadastrada com sucesso!");
+        Scanner s = new Scanner(System.in);
+        System.out.print("Digite o nome: ");
+        this.nome = s.nextLine();
+        System.out.print("Digite o CPF: ");
+        this.cpf = s.nextLine();
+        System.out.println("Digite a data de nascimento: ");
+        this.dataNascimento = new Data();
+        System.out.print("Digite o sexo: ");
+        this.sexo = s.nextLine().charAt(0);
+        System.out.println("Pessoa cadastrada com sucesso!"); 
     }
 
-    Pessoa(String n, String c, Data d, String s) {
+    Pessoa(String n, String c, Data d, char s) {
         this.nome = n;
         this.cpf = c;
         this.dataNascimento = d;
@@ -28,7 +39,7 @@ public class Pessoa {
         if (this.dataNascimento.mes > hoje.mes) {
             return diff - 1;
         }
-        if (this.dataNascimento.dia < hoje.dia) {
+        if (his.dataNascimento.dia <= hoje.dia) {
             return diff;
         }
         return diff - 1;

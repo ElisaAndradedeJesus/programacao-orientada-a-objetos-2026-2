@@ -2,6 +2,9 @@ package banco;
 
 public class Poupanca extends Conta {
 
+    Poupanca(Gerente gerente) {
+        super(gerente);
+    }
     Poupanca(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         super(numero, titular, criacao, gerente);
     }

@@ -1,8 +1,14 @@
 package banco;
 
+import java.util.Scanner;
+
 public class ContaCorrente extends Conta {
     double limiteChequeEspecial;
 
+    ContaCorrente(Gerente gerente) {
+        super(gerente);
+        this.limiteChequeEspecial = 200;
+    }
     ContaCorrente(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         super(numero, titular, criacao, gerente);
         this.limiteChequeEspecial = 200;
@@ -45,13 +51,9 @@ public class ContaCorrente extends Conta {
         }
     }
 
-    void chequeEspecial(double juros) {
-        if (this.saldo >= 0) {
-            return;
-        } else {
-
-            this.saldo = this.saldo + (juros + this.saldo)/100;
-            // System.out.println("Juros de R$ " + juros + " cobrados na conta " + this.numero + ". Novo saldo: R$ " + this.saldo);
+    void chequeEspecial(double taxa) {
+        if (this.saldo < 0) {
+            this.saldo = this.saldo + (taxa * this.saldo) / 100;
         }
     }
 

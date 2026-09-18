@@ -1,9 +1,20 @@
 package banco;
+import java.util.Scanner;
 
 public class Data {
     int dia, mes, ano;
 
-    Data(int d, int m, int a) {
+    public Data() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Digite o dia: ");
+        this.dia = s.nextInt();
+        System.out.print("Digite o mês: ");
+        this.mes = s.nextInt();
+        System.out.print("Digite o ano: ");
+        this.ano = s.nextInt();
+        System.out.println("Data cadastrada com sucesso!");
+    }
+    public Data(int d, int m, int a) {
         this.dia = d;
         this.mes = m;
         this.ano = a;
