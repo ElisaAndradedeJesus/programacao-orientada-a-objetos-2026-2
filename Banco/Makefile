@@ -29,7 +29,7 @@ compile:
 		echo "Nenhum arquivo Java encontrado em $(SRC_DIR)."; \
 	else \
 		mkdir -p $(OUT_DIR); \
-		$(JAVAC) -d $(OUT_DIR) $(SOURCES); \
+		$(JAVAC) -d $(OUT_DIR) $(SOURCES) || exit $$?; \
 		echo "Compilação concluída."; \
 	fi
 

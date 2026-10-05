@@ -3,17 +3,16 @@ import java.util.Scanner;
 
 
 public class Gerente extends Pessoa {
-    String matricula;
-    String senha;
+    private String matricula;
+    private String senha;
 
     Gerente(){
         super();
-        Scanner s = new Scanner(System.in);
+        Scanner s = Entrada.scanner;
 
         System.out.print("Digite a matrícula: ");
         this.matricula = s.nextLine();
-        System.out.print("Digite a senha: ");
-        this.senha = s.nextLine();
+        this.senha = "123456";
     }
     Gerente(String nome, String cpf, Data data, char sexo, String matricula, String senha) {
         super(nome, cpf, data, sexo);
@@ -21,13 +20,30 @@ public class Gerente extends Pessoa {
         this.senha = senha;
     }
 
-    boolean validarSenha(String senhaInformada) {
+    public boolean validarAcesso(String senhaInformada) {
         return this.senha.equals(senhaInformada);
     }
-    boolean validarAcesso() {
-        Scanner s = new Scanner(System.in);
+    public boolean validarAcesso() {
+        Scanner s = Entrada.scanner;
         System.out.print("Informe a Senha: ");
         String senhaInformada = s.nextLine();
-        return this.validarSenha(senhaInformada);
+        return this.validarAcesso(senhaInformada);
+    }
+
+    // Getters and Setters
+    public String getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+  
+    public void setSenha(String senhaAtual,String novaSenha) {
+        if(this.validarAcesso(senhaAtual)){
+            this.senha = novaSenha;
+            System.out.println("Senha alterada com sucesso!");
+        } else {
+            System.out.println("Senha atual incorreta. A senha não foi alterada.");
+        }
     }
 }

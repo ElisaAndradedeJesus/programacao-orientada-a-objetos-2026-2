@@ -1,17 +1,14 @@
 package banco;
-import java.util.Scanner;
 
 public class Data {
-    int dia, mes, ano;
+    private int dia;
+    private int mes;
+    private int ano;
 
     public Data() {
-        Scanner s = new Scanner(System.in);
-        System.out.print("Digite o dia: ");
-        this.dia = s.nextInt();
-        System.out.print("Digite o mês: ");
-        this.mes = s.nextInt();
-        System.out.print("Digite o ano: ");
-        this.ano = s.nextInt();
+        this.dia = Entrada.lerInteiro("Digite o dia: ");
+        this.mes = Entrada.lerInteiro("Digite o mês: ");
+        this.ano = Entrada.lerInteiro("Digite o ano: ");
         System.out.println("Data cadastrada com sucesso!");
     }
     public Data(int d, int m, int a) {
@@ -34,6 +31,29 @@ public class Data {
             return true;
         }
         return false;
+    }
+
+    // Getters and Setters
+    public int getDia() {
+        return dia;
+    }
+    public void setDia(int dia) {
+        this.dia = dia; 
+    }
+
+
+    public int getMes() {
+        return mes;
+    }
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
 }
