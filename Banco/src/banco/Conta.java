@@ -29,6 +29,22 @@ public class Conta {
         this.gerente = gerente;
         System.out.println("Conta criada com sucesso!");
     }
+    Conta (Pessoa titular, Gerente gerente, Data criacao) {
+        
+        this.titular = titular;
+        this.saldo = 0;
+        this.criacao = criacao;
+        this.gerente = gerente;
+        System.out.println("Digite o número da conta: ");
+        Scanner s = Entrada.scanner;
+        String numero = s.nextLine();
+        while(numero.isEmpty()) {
+            System.out.println("Número da conta não pode ser vazio. Digite novamente: ");
+            numero = s.nextLine();
+        }
+        this.numero = numero;
+        System.out.println("Conta criada com sucesso!");
+    }
 
     protected double disponivel() {
         return this.saldo;

@@ -12,6 +12,10 @@ public class ContaCorrente extends Conta {
         super(numero, titular, criacao, gerente);
         this.limiteChequeEspecial = 200;
     }
+    public ContaCorrente(Pessoa titular, Gerente gerente, Data criacao) {
+        super(titular, gerente, criacao);
+        this.limiteChequeEspecial = 200;
+    }
 
     @Override
     protected double disponivel() {

@@ -1,12 +1,15 @@
 package banco;
 
-public class Poupanca extends Conta {
+public class ContaPoupanca extends Conta {
 
-    public Poupanca(Gerente gerente) {
+    public ContaPoupanca(Gerente gerente) {
         super(gerente);
     }
-    Poupanca(String numero, Pessoa titular, Data criacao, Gerente gerente) {
+    ContaPoupanca(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         super(numero, titular, criacao, gerente);
+    }
+    ContaPoupanca(Pessoa titular, Gerente gerente, Data criacao) {
+        super(titular, gerente, criacao);
     }
 
     @Override
