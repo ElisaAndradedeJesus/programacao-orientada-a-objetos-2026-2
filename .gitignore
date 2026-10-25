@@ -10,3 +10,6 @@ target/
 .idea/
 *.iml
 
+# PDF de outra disciplina enviado por engano
+/TrabalhoPOO/\[SO 2026-2\] Trabalho 1 (PThreads).pdf
+
