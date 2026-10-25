@@ -3,18 +3,33 @@ public class AlunoConcluinte extends Aluno {
     private double notaComponenteEspecifico;
     private boolean presente;
 
+    AlunoConcluinte(String nome, String matricula){
+        super(nome, matricula);
+    }
+
     public void cadastrarProva(double n1, double n2) {
-        // Lógica para cadastrar as notas da prova
+        this.notaFormacaoGeral = n1;
+        this.notaComponenteEspecifico = n2;
+        this.presente = true; // Marca o aluno como presente na prova
     }
 
     public double calcularNota() {
-        // Lógica para calcular a nota do aluno concluinte
-        return 0;
+        return (notaFormacaoGeral*3 + notaComponenteEspecifico*7) / 10;
     }
 
+    @Override
     public boolean regular() {
-        // Lógica para verificar se o aluno concluinte é regular
-        return false;
+        
+        return super.regular() && this.presente;
+    }
+    @Override 
+    public String toString() {
+        return super.toString() + " - CONCLUINTE";
+    }
+
+    // Getters e Setters=======================================================================================
+    public boolean isPresente() {
+        return this.presente;
     }
 
 }

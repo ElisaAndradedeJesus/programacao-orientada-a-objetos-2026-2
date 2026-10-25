@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = Entrada.abrirEntrada();
-        Sistema s = new Sistema();
+        Main s = new Main();
 
         int op = Entrada.menu(input);
 
