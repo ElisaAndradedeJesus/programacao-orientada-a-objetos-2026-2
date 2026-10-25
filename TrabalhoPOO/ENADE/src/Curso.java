@@ -37,18 +37,40 @@ public class Curso {
         }
         return soma / quantidade;
     }
-    
+
     public int calcularConceito() {
-        // Lógica para calcular o conceito da área com base nas notas dos alunos
-        return 1;
+        double media = calcularMedia();
+
+        if (media < 2.0) return 1;
+        if (media < 4.0) return 2;
+        if (media < 6.0) return 3;
+        if (media < 8.0) return 4;
+        return 5;
     }
+
+
     public AlunoIngressante[] ingressantes() {
-        // Lógica para retornar um array de alunos ingressantes da área
-        return null;
+        ArrayList<AlunoIngressante> resultado = new ArrayList<>();
+
+        for (Aluno aluno : this.alunos) {
+            if (aluno instanceof AlunoIngressante ingressante) {
+                resultado.add(ingressante);
+            }
+        }
+
+        return resultado.toArray(new AlunoIngressante[0]);
     }
+
     public AlunoIngressante[] ingressantes(int semestre) {
-        
-        return null;
+        ArrayList<AlunoIngressante> resultado = new ArrayList<>();
+
+        for (AlunoIngressante ingressante : ingressantes()) {
+            if (ingressante.getSemIngresso() == semestre) {
+                resultado.add(ingressante);
+            }
+        }
+
+        return resultado.toArray(new AlunoIngressante[0]);
     }
 
     // Getters e Setters=======================================================================================

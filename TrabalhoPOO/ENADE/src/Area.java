@@ -20,6 +20,7 @@ public class Area {
     }
 
     // Getters e Setters=======================================================================================
+    
     public String getCodigo() {
         return codigo;  
     }
