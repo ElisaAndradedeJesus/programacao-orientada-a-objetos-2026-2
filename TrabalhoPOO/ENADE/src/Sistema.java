@@ -62,4 +62,13 @@ public class Sistema {
 
         return alunosIrregulares;
     }
+    
+    public Area buscarAreaPorCodigo(String codigo) {
+        for (Area area : this.areas) {
+            if (area.getCodigo().equals(codigo)) {
+                return area;
+            }
+        }
+        return null;
+    }
 }
