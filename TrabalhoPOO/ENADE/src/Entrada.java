@@ -124,10 +124,10 @@ public class Entrada {
                 Entrada.cadIngressante(s, input);
                 break;
             case 4:
-                //Entrada.cadConcluinte(s, input);
+                Entrada.cadConcluinte(s, input);
                 break;
             case 5:
-                //Entrada.cadResposta(s, input);
+                Entrada.cadResposta(s, input);
                 break;
             case 6:
                 //Entrada.cadProva(s, input);
@@ -168,9 +168,59 @@ public class Entrada {
         System.out.println("Curso cadastrado com sucesso!");
     }
 
+    public static void listarCursos(ArrayList<Curso> cursos){
+        System.out.println("Cursos cadastrados:");
+        for (Curso curso : cursos) {
+            System.out.println(curso.getNome() + " (" + curso.getCodigo() + ")");
+        }
+    }
+
     public static void cadIngressante(Sistema s, Scanner input){
+        String nome = Entrada.lerLinha("Digite o nome do ingressante: ", input);
+        String matricula = Entrada.lerLinha("Digite a matrícula do ingressante: ", input);
+        int semestre = Entrada.lerInteiro("Digite o semestre de ingresso: ", input);
+
+        Entrada.listarCursos(s.getCursos());
+        String codigo = Entrada.lerLinha("Digite o código do curso do aluno: ", input);
+        Curso curso = s.buscarCursoPorCodigo(codigo);
+
+        s.cadastrarAluno(new AlunoIngressante(nome, matricula, semestre), curso);
+        System.out.println("Aluno ingressante cadastrado com sucesso!");
+    }
+
+    public static void cadConcluinte(Sistema s, Scanner input){
+        String nome = Entrada.lerLinha("Digite o nome do concluinte: ", input);
+        String matricula = Entrada.lerLinha("Digite a matrícula do concluinte: ", input);
+
+        Entrada.listarCursos(s.getCursos());
+        String codigo = Entrada.lerLinha("Digite o código do curso do aluno: ", input);
+        Curso curso = s.buscarCursoPorCodigo(codigo);
+
+        s.cadastrarAluno(new AlunoConcluinte(nome, matricula), curso);
+        System.out.println("Aluno concluinte cadastrado com sucesso!");
+    }
+
+    public static void listarAlunosSemQuestionario(ArrayList<Aluno> alunos){
+        System.out.println("Alunos cadastrados que não responderam o questionário:");
+        for(Aluno aluno : alunos){
+            if (!aluno.isQuestionarioRespondido()) {
+                System.out.println(aluno);
+            }
+        }
         
     }
+
+    public static void cadResposta(Sistema s, Scanner input){
+        Entrada.listarAlunosSemQuestionario(s.getAlunos());
+
+        String matricula = Entrada.lerLinha("Digite a matrícula do aluno que respondeu ao questionário: ", input);
+        Aluno aluno = s.buscarAlunoPorMatricula(matricula);
+
+        aluno.cadastrarResposta();
+        System.out.println("Resposta cadastrada com sucesso!");
+    }
+
+    
 
 
 

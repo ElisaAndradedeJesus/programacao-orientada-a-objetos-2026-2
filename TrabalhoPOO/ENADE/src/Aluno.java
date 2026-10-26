@@ -12,6 +12,9 @@ public class Aluno {
     public boolean regular(){
         return questionarioRespondido;
     }
+    public boolean isQuestionarioRespondido() {
+    return questionarioRespondido;
+}
 
     public void cadastrarResposta(){
         this.questionarioRespondido = true;
