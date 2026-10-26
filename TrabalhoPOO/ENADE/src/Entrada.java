@@ -1,5 +1,6 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -98,7 +99,7 @@ public class Entrada {
         return op;
     }
 
-    public static void menuCadastro(Main s, Scanner input) {
+    public static void menuCadastro(Sistema s, Scanner input) {
         String msg = "*********************\n" +
                 "1) Cadastrar Área\n" +
                 "2) Cadastrar Curso\n" +
@@ -117,10 +118,10 @@ public class Entrada {
                 Entrada.cadArea(s, input);
                 break;
             case 2:
-                //Entrada.cadCurso(s, input);
+                Entrada.cadCurso(s, input);
                 break;
             case 3:
-                //Entrada.cadIngressante(s, input);
+                Entrada.cadIngressante(s, input);
                 break;
             case 4:
                 //Entrada.cadConcluinte(s, input);
@@ -137,12 +138,38 @@ public class Entrada {
 
     }
 
-    public static void cadArea(Main s, Scanner input) {
+    public static void cadArea(Sistema s, Scanner input) {
         String nome = Entrada.lerLinha("Digite o nome da área: ", input);
         String codigo = Entrada.lerLinha("Digite o código da área: ", input);
 
         s.cadastrarArea(new Area(nome, codigo));
         System.out.println("Área cadastrada com sucesso!");
+    }
+
+    public static void listarAreas(ArrayList<Area> areas){
+        System.out.println("Áreas cadastradas:");
+        for(Area area : areas){
+            System.out.println(area.getNome() + " (" + area.getCodigo() + ")");
+        }
+    }
+
+
+    public static void cadCurso(Sistema s, Scanner input){
+        String nome = Entrada.lerLinha("Digite  o nome do curso: ", input);
+        String codigo = Entrada.lerLinha("Digite  o código do curso: ", input);
+
+        ArrayList<Area> areas = s.getAreas();
+        Entrada.listarAreas(areas);
+
+        String codigoArea = Entrada.lerLinha("Digite o código da área do curso: ", input);
+        Area area = s.buscarAreaPorCodigo(codigoArea);
+
+        s.cadastrarCurso(new Curso(nome, codigo), area);
+        System.out.println("Curso cadastrado com sucesso!");
+    }
+
+    public static void cadIngressante(Sistema s, Scanner input){
+        
     }
 
 
