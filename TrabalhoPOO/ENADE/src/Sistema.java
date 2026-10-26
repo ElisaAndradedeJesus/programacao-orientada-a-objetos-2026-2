@@ -84,4 +84,16 @@ public class Sistema {
         }
         return null;
     }
+    public ArrayList<Aluno> getAlunos(){
+        return this.alunos;
+    }
+
+    public Aluno buscarAlunoPorMatricula(String matricula) {
+        for (Aluno aluno : this.alunos) {
+            if (aluno.getMatricula().equals(matricula)) {
+                return aluno;
+            }
+        }
+        return null;
+    }
 }
