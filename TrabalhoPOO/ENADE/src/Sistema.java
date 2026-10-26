@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 public class Sistema {
-    private Area[] areas;
-    private Curso[] cursos;
-    private Aluno[] alunos;
+    private ArrayList<Area> areas = new ArrayList<>();
+    private ArrayList<Curso> cursos = new ArrayList<>();
+    private ArrayList<Aluno> alunos = new ArrayList<>();
 
     public void cadastrarArea(Area area) {
         this.areas.add(area);
@@ -17,5 +19,11 @@ public class Sistema {
         this.alunos.add(aluno);
     }
 
-
+    public void listarResultados(int conceito){
+        System.out.println("Cursos com conceito " + conceito + ":");
+        for (Curso curso : cursos) {
+            if (curso.getConceito() == conceito) {
+                System.out.println("Curso: " + curso.getNome() + ", Área: " + curso.getArea().getNome());
+            }
+    }
 }
