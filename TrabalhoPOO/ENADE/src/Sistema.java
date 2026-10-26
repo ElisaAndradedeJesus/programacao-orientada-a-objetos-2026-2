@@ -42,4 +42,7 @@ public class Sistema {
 
         return resultado;
     }
+    public ArrayList<Area> getAreas(){
+        return this.areas;
+    }
 }
