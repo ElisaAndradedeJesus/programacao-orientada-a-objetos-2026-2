@@ -30,4 +30,45 @@ public class Sistema {
 
         return resultado;
     }
+
+    public ArrayList<Curso> listarResultados(String nomeArea){
+        ArrayList<Curso> resultado = new ArrayList<>();
+
+        for (Area area : areas) {
+            if (area.getNome().equalsIgnoreCase(nomeArea)) {
+                resultado.addAll(area.getCursos());
+            }
+        }
+
+        return resultado;
+    }
+
+    public ArrayList<Area> getAreas(){
+        return this.areas;
+    }
+
+    public ArrayList<Aluno> listarAlunosIrregulares() {
+        ArrayList<Aluno> alunosIrregulares = new ArrayList<>();
+
+        for (Aluno aluno : alunos) {
+            if (aluno instanceof AlunoConcluinte concluinte) {
+                if (!concluinte.regular()) {
+                    alunosIrregulares.add(aluno);
+                }
+            } else if (!aluno.regular()) {
+                alunosIrregulares.add(aluno);
+            }
+        }
+
+        return alunosIrregulares;
+    }
+    
+    public Area buscarAreaPorCodigo(String codigo) {
+        for (Area area : this.areas) {
+            if (area.getCodigo().equals(codigo)) {
+                return area;
+            }
+        }
+        return null;
+    }
 }
