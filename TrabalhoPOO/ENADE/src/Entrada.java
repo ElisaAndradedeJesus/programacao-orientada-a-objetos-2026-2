@@ -98,7 +98,7 @@ public class Entrada {
         return op;
     }
 
-    public static void menu_cadastro(Main s, Scanner input) {
+    public static void menuCadastro(Main s, Scanner input) {
         String msg = "*********************\n" +
                 "1) Cadastrar Área\n" +
                 "2) Cadastrar Curso\n" +

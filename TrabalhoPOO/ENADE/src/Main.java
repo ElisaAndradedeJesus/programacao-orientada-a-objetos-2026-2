@@ -3,17 +3,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = Entrada.abrirEntrada();
-        Main s = new Main();
+        Sistema sistema = new Sistema();
 
         int op = Entrada.menu(input);
 
         while (op != 0) {
             switch(op) {
                 case 1:
-                    Entrada.menu_cadastro(s, input);
+                    Entrada.menuCadastro(sistema, input);
                     break;
                 case 2:
-                    //Entrada.menu_relatorios(s, input);
+                    //Entrada.menuRelatorios(s, input);
                     break;
                 default:
                     System.out.println("Opção inválida.");

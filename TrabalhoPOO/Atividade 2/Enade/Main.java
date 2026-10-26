@@ -10,7 +10,7 @@ public class Main {
         while (op != 0) {
             switch(op) {
                 case 1:
-                    Entrada.menu_cadastro(s, input);
+                    Entrada.menuCadastro(s, input);
                     break;
                 case 2:
                     //Entrada.menu_relatorios(s, input);
