@@ -30,4 +30,16 @@ public class Sistema {
 
         return resultado;
     }
+
+    public ArrayList<Curso> listarResultados(String nomeArea){
+        ArrayList<Curso> resultado = new ArrayList<>();
+
+        for (Area area : areas) {
+            if (area.getNome().equalsIgnoreCase(nomeArea)) {
+                resultado.addAll(area.getCursos());
+            }
+        }
+
+        return resultado;
+    }
 }
