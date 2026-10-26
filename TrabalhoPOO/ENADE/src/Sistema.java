@@ -19,8 +19,15 @@ public class Sistema {
         this.alunos.add(aluno);
     }
 
-    public void listarResultados(int conceito){
-        System.out.println("Cursos com conceito " + conceito + ":");
-        //fazendo esse trem
+    public ArrayList<Curso> listarResultados(int conceito) {
+        ArrayList<Curso> resultado = new ArrayList<>();
+
+        for (Curso curso : cursos) {
+            if (curso.calcularConceito() == conceito) {
+                resultado.add(curso);
+            }
+        }
+
+        return resultado;
     }
 }
