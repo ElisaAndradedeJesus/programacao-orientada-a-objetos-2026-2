@@ -221,12 +221,19 @@ public class Entrada {
     }
 
     public static void cadProva(Sistema s, Scanner input){
-        // 
-        
+        System.out.println("Concluintes cadastrados:");
+        for (Aluno aluno : s.getAlunos()) {
+            if (aluno instanceof AlunoConcluinte) {
+                System.out.println(aluno);
+            }
+        }
+
+        String matricula = Entrada.lerLinha("Digite a matrícula do aluno que realizou a prova: ", input);
+        Aluno aluno = s.buscarAlunoPorMatricula(matricula);
+
+        double notaGeral = Entrada.lerDouble("Digite o valor da nota de formação geral: ", input);
+        double notaConhecimento = Entrada.lerDouble("Digite o valor da nota de conhecimento específico: ", input);
+        ((AlunoConcluinte) aluno).cadastrarProva(notaGeral, notaConhecimento);
+        System.out.println("Nota cadastrada com sucesso!");
     }
-
-    
-
-
-
 }
