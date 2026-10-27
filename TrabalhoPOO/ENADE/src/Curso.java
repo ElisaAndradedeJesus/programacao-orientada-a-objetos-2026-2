@@ -26,7 +26,8 @@ public class Curso {
         int quantidade = 0;
 
         for (Aluno aluno : this.alunos) {
-            if (aluno instanceof AlunoConcluinte concluinte) {
+            if (aluno instanceof AlunoConcluinte) {
+                AlunoConcluinte concluinte = (AlunoConcluinte) aluno;
                 soma += concluinte.calcularNota();
                 quantidade++;
             }
@@ -53,7 +54,8 @@ public class Curso {
         ArrayList<AlunoIngressante> resultado = new ArrayList<>();
 
         for (Aluno aluno : this.alunos) {
-            if (aluno instanceof AlunoIngressante ingressante) {
+            if (aluno instanceof AlunoIngressante) {
+                AlunoIngressante ingressante = (AlunoIngressante) aluno;
                 resultado.add(ingressante);
             }
         }
