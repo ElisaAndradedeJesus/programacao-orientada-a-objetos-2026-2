@@ -102,4 +102,22 @@ public class Sistema {
         }
         return null;
     }
+
+    public Area buscarAreaDoCurso(Curso curso) {
+        for (Area area : this.areas) {
+            if (area.getCursos().contains(curso)) {
+                return area;
+            }
+        }
+        return null;
+    }
+
+    public Curso buscarCursoDoAluno(Aluno aluno) {
+        for (Curso curso : this.cursos) {
+            if (curso.getAlunos().contains(aluno)) {
+                return curso;
+            }
+        }
+        return null;
+    }
 }

@@ -99,6 +99,31 @@ public class Entrada {
         return op;
     }
 
+    public static void menuRelatorios(Sistema s, Scanner input) {
+        String msg = "1) Listar Resultados por Conceito\n"
+                + "2) Listar Resultados por Área\n"
+                + "3) Listar Alunos Irregulares\n"
+                + "0) Voltar\n";
+
+        int op = Entrada.lerInteiro(msg, input);
+
+        switch (op) {
+            case 1:
+                Entrada.relatorioPorConceito(s, input);
+                break;
+            case 2:
+                // Entrada.relatorioPorArea(s, input);
+                break;
+            case 3:
+                // Entrada.relatorioAlunosIrregulares(s);
+                break;
+            case 0:
+                return;
+            default:
+                System.out.println("Opção inválida.");
+        }
+    }
+
     public static void menuCadastro(Sistema s, Scanner input) {
         String msg = "*********************\n" +
                 "1) Cadastrar Área\n" +
@@ -137,6 +162,8 @@ public class Entrada {
         }
 
     }
+
+    //MÉTODOS DE CADASTRO
 
     public static void cadArea(Sistema s, Scanner input) {
         String nome = Entrada.lerLinha("Digite o nome da área: ", input);
@@ -220,11 +247,75 @@ public class Entrada {
         System.out.println("Resposta cadastrada com sucesso!");
     }
 
-    public static void cadProva(Sistema s, Scanner input){
-        // 
-        
-    }
 
+    // MÉTODOS DE RELATÓRIOS
+
+
+
+    public static void relatorioPorConceito(Sistema s, Scanner input) {
+        int conceito = Entrada.lerInteiro(
+            "Digite o conceito desejado (1 a 5): ", input
+        );
+
+        ArrayList<Curso> cursos = s.listarResultados(conceito);
+
+        System.out.println("Cursos com conceito " + conceito + ":");
+
+        if (cursos.isEmpty()) {
+            System.out.println(
+                "Nenhum curso com conceito " + conceito + " foi encontrado."
+            );
+            return;
+        }
+
+        for (Curso curso : cursos) {
+            Area area = s.buscarAreaDoCurso(curso);
+
+            System.out.println(
+                curso.getNome() + " (" + curso.getCodigo() + ")"
+                + " - Área: " + area.getNome() + " (" + area.getCodigo() + ")"
+            );
+        }
+    }
+    public static void relatorioPorArea(Sistema s, Scanner input) {
+        Entrada.listarAreas(s.getAreas());
+
+        String nomeArea = Entrada.lerLinha("Digite o nome da área: ", input);
+        ArrayList<Curso> cursos = s.listarResultados(nomeArea);
+
+        if (cursos.isEmpty()) {
+            System.out.println(
+                "Nenhum curso na área " + nomeArea + " foi encontrado."
+            );
+            return;
+        }
+
+        Area area = s.buscarAreaDoCurso(cursos.get(0));
+
+        System.out.println(
+            "Conceitos dos cursos da área "
+            + area.getNome() + " (" + area.getCodigo() + "):"
+        );
+
+        for (Curso curso : cursos) {
+            System.out.println(
+                curso.getNome() + " (" + curso.getCodigo() + "): "
+                + curso.calcularConceito()
+            );
+        }
+    }
+    public static void relatorioAlunosIrregulares(Sistema s) {
+        System.out.println("Alunos irregulares com o ENADE:");
+
+        for (Aluno aluno : s.listarAlunosIrregulares()) {
+            Curso curso = s.buscarCursoDoAluno(aluno);
+
+            System.out.println(
+                aluno + " - CURSO: "
+                + curso.getNome() + " (" + curso.getCodigo() + ")"
+            );
+        }
+    }
     
 
 
