@@ -2,7 +2,7 @@
 
 JAVAC := javac
 JAVA := java
-INPUT ?= ../Atividade 2/input.txt
+INPUT ?= input.txt
 
 .PHONY: build run test
 
