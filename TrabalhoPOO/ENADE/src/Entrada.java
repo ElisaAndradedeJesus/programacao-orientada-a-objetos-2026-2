@@ -83,8 +83,7 @@ public class Entrada {
      */
     public static int menu(Scanner input) {
         // Imprime o menu principal, lê a opção escolhida pelo usuário e retorna a opção selecionada.
-        String msg = "*********************\n" +
-                "Escolha uma opção:\n" +
+        String msg = "Escolha uma opção:\n" +
                 "1) Cadastro\n" +
                 "2) Relatórios\n" +
                 "0) Sair\n";
@@ -112,10 +111,10 @@ public class Entrada {
                 Entrada.relatorioPorConceito(s, input);
                 break;
             case 2:
-                // Entrada.relatorioPorArea(s, input);
+                Entrada.relatorioPorArea(s, input);
                 break;
             case 3:
-                // Entrada.relatorioAlunosIrregulares(s);
+                Entrada.relatorioAlunosIrregulares(s);
                 break;
             case 0:
                 return;
@@ -125,7 +124,7 @@ public class Entrada {
     }
 
     public static void menuCadastro(Sistema s, Scanner input) {
-        String msg = "*********************\n" +
+        String msg = "Escolha uma opção:\n" +
                 "1) Cadastrar Área\n" +
                 "2) Cadastrar Curso\n" +
                 "3) Cadastrar Aluno Ingressante\n" +
@@ -182,8 +181,8 @@ public class Entrada {
 
 
     public static void cadCurso(Sistema s, Scanner input){
-        String nome = Entrada.lerLinha("Digite  o nome do curso: ", input);
-        String codigo = Entrada.lerLinha("Digite  o código do curso: ", input);
+        String nome = Entrada.lerLinha("Digite o nome do curso: ", input);
+        String codigo = Entrada.lerLinha("Digite o código do curso: ", input);
 
         ArrayList<Area> areas = s.getAreas();
         Entrada.listarAreas(areas);
@@ -228,7 +227,7 @@ public class Entrada {
     }
 
     public static void listarAlunosSemQuestionario(ArrayList<Aluno> alunos){
-        System.out.println("Alunos cadastrados que não responderam o questionário:");
+        System.out.println("Alunos cadastrados:");
         for(Aluno aluno : alunos){
             if (!aluno.isQuestionarioRespondido()) {
                 System.out.println(aluno);
@@ -321,7 +320,7 @@ public class Entrada {
     public static void cadProva(Sistema s, Scanner input){
         System.out.println("Concluintes cadastrados:");
         for (Aluno aluno : s.getAlunos()) {
-            if (aluno instanceof AlunoConcluinte) {
+            if (aluno instanceof AlunoConcluinte concluinte && !concluinte.isPresente()) {
                 System.out.println(aluno);
             }
         }
@@ -330,8 +329,8 @@ public class Entrada {
         Aluno aluno = s.buscarAlunoPorMatricula(matricula);
 
         double notaGeral = Entrada.lerDouble("Digite o valor da nota de formação geral: ", input);
-        double notaConhecimento = Entrada.lerDouble("Digite o valor da nota de conhecimento específico: ", input);
+        double notaConhecimento = Entrada.lerDouble("Digite o valor da nota de conhecimentos específicos: ", input);
         ((AlunoConcluinte) aluno).cadastrarProva(notaGeral, notaConhecimento);
-        System.out.println("Nota cadastrada com sucesso!");
+        System.out.println("Prova cadastrada com sucesso!");
     }
 }

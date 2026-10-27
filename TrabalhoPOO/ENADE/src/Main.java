@@ -13,7 +13,7 @@ public class Main {
                     Entrada.menuCadastro(sistema, input);
                     break;
                 case 2:
-                    //Entrada.menuRelatorios(s, input);
+                    Entrada.menuRelatorios(sistema, input);
                     break;
                 default:
                     System.out.println("Opção inválida.");
