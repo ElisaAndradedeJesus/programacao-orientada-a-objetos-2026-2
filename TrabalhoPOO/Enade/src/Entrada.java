@@ -87,9 +87,9 @@ public class Entrada {
                 "1) Cadastro\n" +
                 "2) Relatórios\n" +
                 "0) Sair\n";
-
+        
         int op = Entrada.lerInteiro(msg, input);
-
+         
         while (op < 0 || op > 2) {
             System.out.println("Opção inválida. Tente novamente: ");
             op = Entrada.lerInteiro(msg, input);
@@ -104,8 +104,9 @@ public class Entrada {
                 + "3) Listar Alunos Irregulares\n"
                 + "0) Voltar\n";
 
+        
         int op = Entrada.lerInteiro(msg, input);
-
+         
         switch (op) {
             case 1:
                 Entrada.relatorioPorConceito(s, input);
@@ -133,8 +134,9 @@ public class Entrada {
                 "6) Cadastrar Resultado de Prova\n" +
                 "0) Voltar\n";
 
+        
         int op = Entrada.lerInteiro(msg, input);
-
+         
         if (op == 0) return;
 
         switch(op) {
@@ -170,6 +172,7 @@ public class Entrada {
 
         s.cadastrarArea(new Area(nome, codigo));
         System.out.println("Área cadastrada com sucesso!");
+         
     }
 
     public static void listarAreas(ArrayList<Area> areas){
@@ -192,6 +195,7 @@ public class Entrada {
 
         s.cadastrarCurso(new Curso(nome, codigo), area);
         System.out.println("Curso cadastrado com sucesso!");
+         
     }
 
     public static void listarCursos(ArrayList<Curso> cursos){
@@ -212,6 +216,7 @@ public class Entrada {
 
         s.cadastrarAluno(new AlunoIngressante(nome, matricula, semestre), curso);
         System.out.println("Aluno ingressante cadastrado com sucesso!");
+         
     }
 
     public static void cadConcluinte(Sistema s, Scanner input){
@@ -224,6 +229,7 @@ public class Entrada {
 
         s.cadastrarAluno(new AlunoConcluinte(nome, matricula), curso);
         System.out.println("Aluno concluinte cadastrado com sucesso!");
+         
     }
 
     public static void listarAlunosSemQuestionario(ArrayList<Aluno> alunos){
@@ -233,7 +239,6 @@ public class Entrada {
                 System.out.println(aluno);
             }
         }
-        
     }
 
     public static void cadResposta(Sistema s, Scanner input){
@@ -244,6 +249,7 @@ public class Entrada {
 
         aluno.cadastrarResposta();
         System.out.println("Resposta cadastrada com sucesso!");
+         
     }
 
 
@@ -276,6 +282,7 @@ public class Entrada {
                 + " - Área: " + area.getNome() + " (" + area.getCodigo() + ")"
             );
         }
+         
     }
     public static void relatorioPorArea(Sistema s, Scanner input) {
         Entrada.listarAreas(s.getAreas());
@@ -303,6 +310,7 @@ public class Entrada {
                 + curso.calcularConceito()
             );
         }
+         
     }
     public static void relatorioAlunosIrregulares(Sistema s) {
         System.out.println("Alunos irregulares com o ENADE:");
@@ -315,6 +323,7 @@ public class Entrada {
                 + curso.getNome() + " (" + curso.getCodigo() + ")"
             );
         }
+         
     }
 
     public static void cadProva(Sistema s, Scanner input){
@@ -332,5 +341,6 @@ public class Entrada {
         double notaConhecimento = Entrada.lerDouble("Digite o valor da nota de conhecimentos específicos: ", input);
         ((AlunoConcluinte) aluno).cadastrarProva(notaGeral, notaConhecimento);
         System.out.println("Prova cadastrada com sucesso!");
+         
     }
 }
