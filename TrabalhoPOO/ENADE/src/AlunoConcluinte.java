@@ -1,6 +1,6 @@
 public class AlunoConcluinte extends Aluno {
     private double notaFormacaoGeral;
-    private double notaComponenteEspecifico;
+    private double notaComponenteEspecifico;//conhecimento específico
     private boolean presente;
 
     AlunoConcluinte(String nome, String matricula){
@@ -9,7 +9,7 @@ public class AlunoConcluinte extends Aluno {
 
     public void cadastrarProva(double n1, double n2) {
         this.notaFormacaoGeral = n1;
-        this.notaComponenteEspecifico = n2;
+        this.notaComponenteEspecifico = n2; //conhecimento específico
         this.presente = true; // Marca o aluno como presente na prova
     }
 

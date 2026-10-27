@@ -57,7 +57,8 @@ public class Sistema {
         ArrayList<Aluno> alunosIrregulares = new ArrayList<>();
 
         for (Aluno aluno : alunos) {
-            if (aluno instanceof AlunoConcluinte concluinte) {
+            if (aluno instanceof AlunoConcluinte) {
+                AlunoConcluinte concluinte = (AlunoConcluinte) aluno;
                 if (!concluinte.regular()) {
                     alunosIrregulares.add(aluno);
                 }
