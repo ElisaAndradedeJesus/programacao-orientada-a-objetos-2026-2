@@ -130,7 +130,7 @@ public class Entrada {
                 Entrada.cadResposta(s, input);
                 break;
             case 6:
-                //Entrada.cadProva(s, input);
+                Entrada.cadProva(s, input);
                 break;
             default:
                 System.out.println("Opção Inválida.");
@@ -218,6 +218,11 @@ public class Entrada {
 
         aluno.cadastrarResposta();
         System.out.println("Resposta cadastrada com sucesso!");
+    }
+
+    public static void cadProva(Sistema s, Scanner input){
+        // 
+        
     }
 
     
